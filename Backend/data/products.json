@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "Gaming Mouse",
+    "description": "High precision gaming mouse with RGB lighting",
+    "price": 49.99,
+    "category": "peripherals",
+    "stock": 20,
+    "image": "gaming-mouse.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Mechanical Keyboard",
+    "description": "RGB mechanical keyboard with cherry switches",
+    "price": 89.99,
+    "category": "peripherals",
+    "stock": 15,
+    "image": "mechanical-keyboard.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Gaming Headset",
+    "description": "Wireless gaming headset with surround sound",
+    "price": 79.99,
+    "category": "audio",
+    "stock": 10,
+    "image": "gaming-headset.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Monitor Stand",
+    "description": "Adjustable monitor stand with storage",
+    "price": 39.99,
+    "category": "stands",
+    "stock": 25,
+    "image": "monitor-stand.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Mouse Pad",
+    "description": "Large gaming mouse pad with non-slip base",
+    "price": 24.99,
+    "category": "mousepads",
+    "stock": 30,
+    "image": "mouse-pad.jpg"
+  },
+  {
+    "id": 6,
+    "name": "USB Hub",
+    "description": "7-port USB 3.0 hub with power adapter",
+    "price": 34.99,
+    "category": "cables",
+    "stock": 18,
+    "image": "usb-hub.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Desk Lamp",
+    "description": "LED desk lamp with adjustable brightness",
+    "price": 44.99,
+    "category": "lighting",
+    "stock": 12,
+    "image": "desk-lamp.jpg"
+  }
+]

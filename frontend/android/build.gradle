@@ -1,0 +1,47 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+
+// Fix for paypal_native_checkout and other libraries missing namespace
+subprojects {
+    afterEvaluate {
+        if (it.hasProperty('android')) {
+            def android = it.android
+            if (it.plugins.hasPlugin('com.android.library')) {
+                if (!android.hasProperty('namespace') || android.namespace == null || android.namespace.isEmpty()) {
+                    // Extract package name from AndroidManifest.xml
+                    try {
+                        def manifestPath = project.file('src/main/AndroidManifest.xml')
+                        if (manifestPath.exists()) {
+                            def manifest = new XmlSlurper().parse(manifestPath)
+                            def pkgName = manifest.@'package'
+                            if (pkgName) {
+                                android.namespace = pkgName.toString()
+                            } else {
+                                android.namespace = 'com.sammrafi.paypal_native_checkout'
+                            }
+                        } else {
+                            android.namespace = 'com.sammrafi.paypal_native_checkout'
+                        }
+                    } catch (Exception e) {
+                        // Fallback
+                        android.namespace = 'com.sammrafi.paypal_native_checkout'
+                    }
+                }
+            }
+        }
+    }
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
