@@ -10,7 +10,7 @@ subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
 
-// Fix for paypal_native_checkout and other libraries missing namespace
+// Gradle plugin namespace configuration
 subprojects {
     afterEvaluate {
         if (it.hasProperty('android')) {
@@ -25,15 +25,10 @@ subprojects {
                             def pkgName = manifest.@'package'
                             if (pkgName) {
                                 android.namespace = pkgName.toString()
-                            } else {
-                                android.namespace = 'com.sammrafi.paypal_native_checkout'
                             }
-                        } else {
-                            android.namespace = 'com.sammrafi.paypal_native_checkout'
                         }
                     } catch (Exception e) {
-                        // Fallback
-                        android.namespace = 'com.sammrafi.paypal_native_checkout'
+                        print('Warning: Could not extract namespace from manifest')
                     }
                 }
             }
